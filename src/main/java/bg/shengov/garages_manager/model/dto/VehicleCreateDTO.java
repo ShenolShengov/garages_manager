@@ -5,7 +5,10 @@ import bg.shengov.garages_manager.annotation.validvehicleyear.ValidVehicleYear;
 import bg.shengov.garages_manager.model.enums.EngineType;
 import bg.shengov.garages_manager.model.enums.GearBoxType;
 import bg.shengov.garages_manager.model.enums.VehicleType;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -41,6 +44,5 @@ public class VehicleCreateDTO implements Serializable {
     private String gearBox;
     @ValidEnum(enumType = VehicleType.class)
     private String type;
-
 
 }

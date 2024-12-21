@@ -3,6 +3,7 @@ package bg.shengov.garages_manager.web.controller;
 import bg.shengov.garages_manager.model.dto.PageableResponse;
 import bg.shengov.garages_manager.model.dto.VehicleCreateDTO;
 import bg.shengov.garages_manager.model.dto.VehicleDetailInfoDTO;
+import bg.shengov.garages_manager.model.dto.VehicleFilterDTO;
 import bg.shengov.garages_manager.model.entity.Vehicle;
 import bg.shengov.garages_manager.service.VehicleService;
 import bg.shengov.garages_manager.service.exception.VehicleCreationException;
@@ -29,9 +30,10 @@ public class VehicleController {
     public ResponseEntity<PageableResponse<VehicleDetailInfoDTO>> all(
             @PageableDefault(size = 2, sort = "id", direction = Sort.Direction.ASC) Pageable pageable,
             @RequestParam(name = "page", required = false) Integer ignoredPage,
-            @RequestParam(name = "sort", required = false) String ignoredSort
+            @RequestParam(name = "sort", required = false) String ignoredSort,
+            @ModelAttribute VehicleFilterDTO filterDTO
     ) {
-        return ResponseEntity.ok(vehicleService.all(pageable.previousOrFirst()));
+        return ResponseEntity.ok(vehicleService.all(filterDTO, pageable.previousOrFirst()));
     }
 
     @PostMapping
