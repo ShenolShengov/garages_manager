@@ -1,7 +1,7 @@
 package bg.shengov.garages_manager.model.entity;
 
 import bg.shengov.garages_manager.model.enums.EngineType;
-import bg.shengov.garages_manager.model.enums.GearType;
+import bg.shengov.garages_manager.model.enums.GearBoxType;
 import bg.shengov.garages_manager.model.enums.VehicleType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,7 +13,8 @@ import java.math.BigDecimal;
 @Table(name = "vehicles")
 @Getter
 @Setter
-public abstract class Vehicle {
+public class Vehicle {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,24 +36,13 @@ public abstract class Vehicle {
     private EngineType engine;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private GearType gearBox;
+    private GearBoxType gearBox;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private VehicleType type;
 
-    protected Vehicle() {
-    }
-
-    public Vehicle(String brand, String model, BigDecimal price, Integer year) {
-        this.brand = brand;
-        this.model = model;
-        this.price = price;
-        this.year = year;
-    }
-
     @Override
     public String toString() {
-
         return """
                 Brand: %s
                 Model: %s
