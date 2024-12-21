@@ -9,11 +9,11 @@ import java.util.List;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 @Getter
-public class CarCreateException extends RuntimeException {
+public class VehicleCreationException extends RuntimeException {
 
     private final List<FieldViolation> violations;
 
-    public CarCreateException(String message, List<FieldViolation> violations) {
+    public VehicleCreationException(String message, List<FieldViolation> violations) {
         super(message);
         this.violations = violations;
     }

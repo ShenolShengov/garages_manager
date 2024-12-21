@@ -15,7 +15,7 @@ public @interface ValidEnum {
 
     Class<? extends Enum<?>> enumType();
 
-    String message() default "Not valid enum for {enumType}";
+    String message() default "Not valid vale for the specify field";
 
     Class<?>[] groups() default {};
 
